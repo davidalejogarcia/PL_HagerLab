@@ -1,0 +1,29 @@
+function plotSingleTrack (Track, imageIx, axesHandle,varargin)
+
+if isempty(varargin)
+    plotSpatTime = 1;
+     
+else
+    plotSpatTime = varargin{1};
+    SpExtent = varargin{2};
+    TiExtent = varargin{3};
+end
+axes(axesHandle);
+delete(findobj(gca,'Color','g'));
+        
+        hold on;
+        if plotSpatTime == 1
+            plotIx = find(Track(:,3) <= imageIx);
+            plot(Track(plotIx,1),Track(plotIx,2),'g','LineWidth',1);
+            hold off;
+        elseif plotSpatTime == 2
+            timevec = Track(:,3);
+            minGraphTime = max(1,timevec(1) - TiExtent);
+            timevec = (timevec-timevec(1))+minGraphTime;
+            spatvec = T
+            plot(,Track(:,1),'g','LineWidth',1);
+            hold off;
+        elseif plotSpatTime == 3
+            plot(Track(:,3),Track(:,2),'g','LineWidth',1);
+            hold off;
+        end
